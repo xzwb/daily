@@ -22,10 +22,10 @@ void ListEmpty(List *list)
     unsigned long len;
     ListNode *current, *next;
 
-    current = ListHead(list);
-    len = ListLength(list);
+    current = list->head;
+    len = list->len;
     while (len--) {
-        next = ListNextNode(current);
+        next = current->next;
         free(current->value);
         free(current);
         current = next;
@@ -48,7 +48,7 @@ void Pop(void *value, List *list)
         exit(1);
     }
 
-    if (!ListLength(list)) {
+    if (!list->len) {
         node->prev = node->next = NULL;
         list->head = list->tail = node;
     } else {
@@ -57,24 +57,27 @@ void Pop(void *value, List *list)
         list->tail->next = node;
         list->tail = node;
     }
-    list->tail->value = value;
+    node->value = value;
     list->len++;
 }
 
-void Push(List *list, void *value)
+void *Push(List *list, void *value)
 {
     ListNode *node;
-    if (!ListLength(list)) {
+    if (!list->len) {
         value = NULL;
     } else {
         value = list->tail->value;
         if (--list->len) {
-            node = ListPrevNode(list->tail);
+            node = list->tail->prev;
             node->next = NULL;
             free(list->tail);
             list->tail = node;
         } else {
-            ListEmpty(list);
+            free(list->tail);
+            list->head = list->tail = NULL;
         }
     }
+
+    return value;
 }
