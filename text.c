@@ -16,7 +16,7 @@ Student *creat()
     Student *p1;
     p = malloc(sizeof(Student));
     int i = 0;
-    while (i++ < 10) {
+    while (i++ < 3) {
         printf("学号:\n");
         scanf("%d", &p->num);
         printf("班级:\n");
@@ -120,10 +120,16 @@ void print(Student *head)
 int main()
 {
     Student *head;
+    Student *node;
+    node = malloc(sizeof(Student));
+    node->num = 1518;
+    strcpy(node->class, "电子1801");
+    strcpy(node->name, "杨懿凡");
     head = creat();
-    Student *result;
-    result = serch(head, "yyf");
-    printf("%d\n", result->num);
-    head = delete(1, head);
+  //  Student *result;
+ //   result = serch(head, "yyf");
+ //   printf("%d\n", result->num);
+//    head = delete(1, head);
+    add(node, head, 2);
     print(head);
 }
