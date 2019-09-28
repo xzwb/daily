@@ -99,4 +99,7 @@ void RadixSort(int arr[], Size size)
             radixarr[j][0] = 0;
         }
     }
+    for (int i = 0; i != RADIX_10; ++i) {
+        free(radixarr[i]);
+    }
 }
