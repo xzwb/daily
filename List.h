@@ -23,5 +23,7 @@ void ListRelease(List *list);
 void Pop(void *value, List *list);
 // 出栈
 void *Push(List *list, void *value);
+// 获取栈顶元素
+void *GetTop(List *list);
 
 #endif

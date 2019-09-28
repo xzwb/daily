@@ -81,3 +81,8 @@ void *Push(List *list, void *value)
 
     return value;
 }
+
+void *GetTop(List *list)
+{
+    return list->tail->value;
+}
