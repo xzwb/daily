@@ -21,6 +21,14 @@ int main()
     try->b = 2;
     try->c = 'a';
     Pop(try, list);
+    try = malloc(sizeof(Try));
+    try->a = 2;
+    try->b = 3;
+    try->c = 'b';
+    Pop(try, list);
     try1 = Push(list, try1);
     printf("%d\n", try1->a);
+    if (list->len == 1) {
+        printf("sss\n");
+    }
 }
