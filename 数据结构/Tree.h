@@ -1,32 +1,29 @@
 #ifndef _Tree_H
 #define _Tree_H
 
-typedef int Height;
-typedef unsigned int Depth;
-
 typedef struct TreeNode {
-   struct TreeNode *LeftChild;
-   struct TreeNode *RightChild;
-   void *value;
-   int num;
-} TreeNode;
+    int data;
+    struct TreeNode *lchild;
+    struct TreeNode *rchild;
+} Tnode, Tree;
 
-typedef struct Tree {
-    // 指向根节点
-    TreeNode *root;
-    // 最大深度
-    Height height;
-} Tree;
-
-// 创建一棵树
-Tree *Init(void);
-// 初始化一颗高度为n的二叉树
-Tree *Creat(Tree *tree, TreeNode *node, Heigth heigth);
-// 给标号为i的地方赋值
-void Assignment(Tree *tree, void *value, int num);
+// 创建二叉树
+void binarytree_create(Tree **root);
+// 销毁二叉树
+void binarytree_destory(Tree *root);
 // 先序遍历
-void Preorder(Tree *tree);
+void binarytree_preorder(Tree *root);
+// 中序遍历
+void binarytree_inorder(Tree *root);
 // 后序遍历
-void Postorder(Tree *tree);
+void binarytree_postorder(Tree *root);
+// 水平遍历
+void binarytree_levelorder(Tree *root);
+// 打印叶子结点
+void binarytree_printleaf(Tree *root);
+// 打印叶子个数
+int binarytree_getleafnum(Tree *root);
+// 打印树的高度
+int binarytree_gethigh(Tree *root);
 
 #endif
