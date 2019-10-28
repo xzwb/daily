@@ -12,7 +12,7 @@ public:
     Person() : name(""), address("") {}
     std::string get_name() const { return name; }
     std::string get_address() const { return address; }
-}
+};
 
 std::istream &read(std::istream &is, Person *item)
 {
